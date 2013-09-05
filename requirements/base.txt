@@ -3,4 +3,13 @@ bpython==0.12
 django-braces==1.2.2
 django-model-utils==1.4.0
 logutils==0.3.3
-South==0.8.1
+South==0.8.2
+celery==3.0.22
+celery-with-redis==3.0
+distribute==0.6.34
+django-celery==3.0.21
+django-redis-cache==0.10.0
+django-redis-sessions==0.4.0
+django-tastypie==0.10.0
+psycopg2==2.5.1
+redis==2.8.0
