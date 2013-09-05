@@ -1,5 +1,5 @@
-from tastypie.resources import Resource
 import inspect
+from tastypie.resources import Resource
 
 
 def get_modules():

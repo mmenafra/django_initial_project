@@ -13,3 +13,6 @@ django-redis-sessions==0.4.0
 django-tastypie==0.10.0
 psycopg2==2.5.1
 redis==2.8.0
+
+django-chocolate
+django-tastydocs
