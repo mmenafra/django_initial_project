@@ -1,6 +1,6 @@
 import string, random
 import factory
-from . import models
+from api import models
 from django.contrib.auth.models import User
 
 def random_string(length=10):

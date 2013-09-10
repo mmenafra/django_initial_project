@@ -7,7 +7,7 @@ from tastypie.authorization import Authorization
 
 class SampleResource(ModelResource):
     class Meta:
-        queryset = Comment.objects.all()
+        queryset = Sample.objects.all()
         authorization = Authorization()
         #validation = WalkValidation()
         list_allowed_methods = ['get', 'delete']

@@ -12,7 +12,7 @@ urlpatterns = patterns('',
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    (r'^api/', include(v1_api.urls)),
+    (r'^api/', include(api.urls)),
     (r'^docs/', include("tastydocs.urls"), {"api": api}), # api must be a reference to the TastyPie API object.
     url(r'^admin/', include(admin.site.urls)),
 )

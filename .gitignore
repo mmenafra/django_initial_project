@@ -13,6 +13,7 @@ build
 
 # SQLite3 database files:
 *.db
+memory
 
 # Logs:
 *.log

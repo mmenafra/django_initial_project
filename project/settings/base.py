@@ -170,7 +170,8 @@ MIDDLEWARE_CLASSES = (
 
 ########## URL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
-ROOT_URLCONF = '%s.urls' % SITE_NAME
+#ROOT_URLCONF = '%s.urls' % SITE_NAME
+ROOT_URLCONF = 'urls'
 ########## END URL CONFIGURATION
 
 
@@ -193,8 +194,10 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    # Database migration helpers:
+    'tastypie',
     'south',
+    'api',
+    'webapp',
 )
 
 # Apps specific for this project go here.
