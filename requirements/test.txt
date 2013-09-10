@@ -3,3 +3,5 @@
 coverage==3.6
 django-discover-runner==0.4
 factory_boy
+-e git://github.com/mmenafra/django-chocolate.git@#egg=django-chocolate
+-e git://github.com/mmenafra/django-tastydocs.git#egg=django-tastydocs

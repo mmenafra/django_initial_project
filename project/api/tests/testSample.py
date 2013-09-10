@@ -1,16 +1,25 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
+# -*- coding: utf-8 -*-
+from .factories import *
+from base import ApiTestCase
+from api.application import api
+from api.models import Sample
+from mockups import tastyfactory
 
-Replace this with more appropriate tests for your application.
-"""
+samples = api._registry["sample"]
 
-from django.test import TestCase
+class SampleTestCase(ApiTestCase):
 
+    @classmethod
+    def setUpClass(cls):
+        super(SampleTestCase, cls).setUpClass()
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+        sample = SampleFactory.create()
+
+        cls.sample_uri, cls.sample = tastyfactory['sample'].create()
+
+    def test_get_ok(self):
+
+        response = self.client.get(samples.get_resource_uri())
+        
+        self.assertResponseHasObjectCount(response, 2)
+        self.assertResponseIsOk(response)

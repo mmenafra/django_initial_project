@@ -14,5 +14,5 @@ django-tastypie==0.10.0
 psycopg2==2.5.1
 redis==2.8.0
 
-django-chocolate
-django-tastydocs
+-e git://github.com/mmenafra/django-chocolate.git@#egg=django-chocolate
+-e git://github.com/mmenafra/django-tastydocs.git#egg=django-tastydocs
