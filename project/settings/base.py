@@ -1,9 +1,7 @@
 """Common settings and globals."""
 
-
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
-
 
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
@@ -40,6 +38,35 @@ ADMINS = (
 MANAGERS = ADMINS
 ########## END MANAGER CONFIGURATION
 
+########## REDIS CONFIGURATION
+REDIS_DATABASES = {
+    'celery' : 0,
+    'sessions' : 1,
+    'cache' : 2,
+}
+
+REDIS_READER_HOST = 'localhost'
+REDIS_WRITER_HOST = 'localhost'
+REDIS_PORT = 6379
+########## END REDIS CONFIGURATION
+
+
+########## CELERY CONFIGURATION
+## Broker settings.
+BROKER_URL = "redis://localhost:6379/0"
+
+# List of modules to import when celery starts.
+CELERY_IMPORTS = ("myapp.tasks", )
+
+## Using the database to store task state and results.
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+#CELERY_RESULT_DBURI = "postgresql://scott:tiger@localhost/mydatabase"
+
+CELERY_ANNOTATIONS = {"tasks.add": {"rate_limit": "10/s"}}
+
+#Enable only if running celery task unit test locally!!!
+#CELERY_ALWAYS_EAGER = True
+########## END CELERY CONFIGURATION
 
 ########## DATABASE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -55,6 +82,15 @@ DATABASES = {
 }
 ########## END DATABASE CONFIGURATION
 
+
+########## SESSION CONFIGURATION
+SESSION_ENGINE = 'redis_sessions.session'
+SESSION_REDIS_HOST = REDIS_WRITER_HOST
+SESSION_REDIS_PORT = REDIS_PORT
+SESSION_REDIS_DB = REDIS_DATABASES['sessions']
+SESSION_REDIS_PREFIX = 'session'
+SESSION_COOKIE_AGE = 31556952
+########## END SESSION CONFIGURATION
 
 ########## GENERAL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
@@ -196,12 +232,12 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'tastypie',
     'south',
-    'api',
-    'webapp',
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'api',
+    'webapp',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
